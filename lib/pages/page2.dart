@@ -1,19 +1,15 @@
 import 'package:estados/models/usuario.dart';
-import 'package:estados/services/usuario_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Page2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //
-    final usuarioService = Provider.of<UsuarioService>(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          usuarioService.existeUsuario ? usuarioService.usuario!.nombre : 'Página 2',
-          style: const TextStyle(color: Colors.black, letterSpacing: -1),
+        title: const Text(
+          'Página 2',
+          style: TextStyle(color: Colors.black, letterSpacing: -1),
         ),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.blue),
@@ -24,27 +20,16 @@ class Page2Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _Boton(
-              () {
-                usuarioService.usuario = Usuario(
-                  nombre: 'Manuel',
-                  edad: 0,
-                  profesiones: ['Designer', 'FrontEnd Developer', 'Apps Developer'],
-                );
-                // Navigator.of(context).pop();
-              },
+              () {},
               'Establecer Usuario',
             ),
             const SizedBox(height: 10),
             _Boton(
-              () {
-                usuarioService.cambiarEdad(41);
-              },
+              () {},
               'Cambiar Edad',
             ),
             const SizedBox(height: 10),
-            _Boton(() {
-              usuarioService.agregarProfesion();
-            }, 'Añadir Profesión'),
+            _Boton(() {}, 'Añadir Profesión'),
           ],
         ),
       ),
