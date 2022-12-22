@@ -5,13 +5,22 @@ class Page1Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Página 1',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 28,
-              fontWeight: FontWeight.w900,
-              letterSpacing: -1,
-            )),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Image(
+              width: 100,
+              image: NetworkImage('https://raw.githubusercontent.com/felangel/bloc/master/docs/assets/bloc_logo_full.png'),
+            ),
+            Text('Estados',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -1,
+                )),
+          ],
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
