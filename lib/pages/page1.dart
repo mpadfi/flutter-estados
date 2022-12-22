@@ -5,7 +5,7 @@ class Page1Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Página 1',
+        title: const Text('Cubit',
             style: TextStyle(
               color: Colors.black,
               fontSize: 28,
