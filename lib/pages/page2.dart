@@ -1,6 +1,4 @@
-import 'package:estados/models/usuario.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Page2Page extends StatelessWidget {
   @override
