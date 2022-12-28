@@ -1,8 +1,15 @@
+import 'package:estados/controllers/usuario_controller.dart';
+import 'package:estados/models/usuario.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Page2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //
+    // print(Get.arguments['nombre']);
+    final usuarioCtrl = Get.find<UsuarioController>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -18,16 +25,38 @@ class Page2Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _Boton(
-              () {},
+              () {
+                usuarioCtrl.cargarUsuario(Usuario(nombre: 'Manuel', edad: 41));
+                Get.snackbar(
+                  'Yeah!',
+                  'Usuario activado',
+                  backgroundColor: Colors.cyan.withOpacity(0.3),
+                  boxShadows: [
+                    const BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 20,
+                    )
+                  ],
+                );
+              },
               'Establecer Usuario',
             ),
             const SizedBox(height: 10),
             _Boton(
-              () {},
+              () {
+                usuarioCtrl.cambiarEdad(25);
+              },
               'Cambiar Edad',
             ),
             const SizedBox(height: 10),
-            _Boton(() {}, 'Añadir Profesión'),
+            _Boton(() {
+              // usuarioCtrl.agregarProfesion('Profesión #${usuarioCtrl.usuario.value.profesiones.length}');
+              usuarioCtrl.agregarProfesion('Profesión #${usuarioCtrl.profesionesCount + 1}');
+            }, 'Añadir Profesión'),
+            const SizedBox(height: 10),
+            _Boton(() {
+              Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+            }, 'Cambiar Tema')
           ],
         ),
       ),
