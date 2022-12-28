@@ -1,10 +1,13 @@
+import 'package:estados/bloc/usuario/usuario_cubit.dart';
 import 'package:estados/models/usuario.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Page2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final usuarioCubit = context.read<UsuarioCubit>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -20,16 +23,23 @@ class Page2Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _Boton(
-              () {},
+              () {
+                final newUser = Usuario(nombre: 'Manuel Polaina', edad: 41, profesiones: ['Ninja Developer', 'Designer']);
+                usuarioCubit.seleccionarUsuario(newUser);
+              },
               'Establecer Usuario',
             ),
             const SizedBox(height: 10),
             _Boton(
-              () {},
+              () {
+                usuarioCubit.cambiarEdad(30);
+              },
               'Cambiar Edad',
             ),
             const SizedBox(height: 10),
-            _Boton(() {}, 'Añadir Profesión'),
+            _Boton(() {
+              usuarioCubit.agregarProfesion();
+            }, 'Añadir Profesión'),
           ],
         ),
       ),
